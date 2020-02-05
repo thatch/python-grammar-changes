@@ -100,3 +100,22 @@ different.)
 
 \* These commits are present in old tags according to git, but the released
 binaries do not appear to recognize them.
+
+# Code samples
+
+These are found in the `examples/` directory listed by the version they are
+"first" added.  Some are backported.  This could be cleaned up, and entries
+removed from this README if someone is interested and has time.
+
+If you get python 2.3 through 3.8 installed on your `PATH`, you can check an
+installed LibCST against the changes that result in syntax errors.
+
+```
+$ python metarun.py
+                                          23 24 25 26 27 30 31 32 33 34 35 36 37 38
+examples/py24-0027-generator-expr.py       X  o  o  o  o  o  o  o  o  o  o  o  o  o
+examples/py26-0025-print-function1.py      O  O  o  O  O  .  .  .  .  .  .  .  .  .
+examples/py26-0025-print-function2.py      X  X  .  X  X  o  o  o  o  o  o  o  o  o
+examples/py26-0025-print-function3.py      X  X  .  o  o  o  o  o  o  o  o  o  o  o
+...
+```
