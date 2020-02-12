@@ -74,21 +74,29 @@ def main():
                     libcst_result = True
                 except cst.ParserSyntaxError:
                     libcst_result = False
-            if libcst_result is not None and results[f][v] != libcst_result:
-                if results[f][v]:
-                    sys.stdout.write(" \x1b[31mO\x1b[0m ")
+
+                if libcst_result != results[f][v]:
+                    sys.stdout.write(
+                        "\x1b[31m"
+                        f"{'o' if results[f][v] else '.'}{'o' if libcst_result else '.'} "
+                        "\x1b[0m"
+                    )
                 else:
-                    sys.stdout.write(" \x1b[31mX\x1b[0m ")
+                    sys.stdout.write(
+                        f"{'o' if results[f][v] else '.'}{'o' if libcst_result else '.'} "
+                    )
             else:
-                sys.stdout.write(" o " if results[f][v] else " . ")
+                sys.stdout.write(
+                    f"{'o' if results[f][v] else '.'}  "
+                )
         sys.stdout.write("\n")
 
     print("Legend:")
     print(" green header means will test with libcst")
-    print(" o   legal")
-    print(" .   illegal")
-    print(" \x1b[31mO\x1b[0m   legal, but libcst fails")
-    print(" \x1b[31mX\x1b[0m   illegal, but libcst succeeds")
+    print()
+    print(" first result is python, second [optional] result is libcst")
+    print(" o   parses")
+    print(" .   does not parse")
 
 
 if __name__ == "__main__":
