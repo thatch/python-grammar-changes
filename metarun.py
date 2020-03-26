@@ -35,7 +35,7 @@ LIBCST_VERSIONS = [
 ]
 
 
-def main():
+def main(filters=()):
     # dict[filename][version]
     results = {}
     for v in VERSIONS:
@@ -61,6 +61,8 @@ def main():
     print("".join(buf))
 
     for f in sorted(results):
+        if filters and not any(filt in f for filt in filters):
+            continue
         sys.stdout.write(f.ljust(max_filename + 1))
         for v in VERSIONS:
             libcst_result = None
@@ -100,4 +102,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv[1:])
