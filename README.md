@@ -5,6 +5,11 @@ different.)
 
 | Release | Commit   | Feature | With `__future__` |
 |---------|----------|---------|-------------------|
+| v3.11.0 | d60457a6 | PEP 654 `except*` groups |
+| v3.11.0 | e8e737bc | PEP 646 variadic generics |
+| v3.10.0 | 145bf269 | PEP 622/634 `match` statements |
+| v3.9.0  | 0daba822 | parenthesized context manager change |
+| v3.8.0  | b5e3ea28 + a965db37 | PEP 570 positional-only params |
 | v3.8.0  | 8f59ee01 | PEP 572 `:=` |
 | v3.7.0  | - | - | `annotations` (on in 4.0) |
 | v3.7.0  | ac317700 | PEP 492 `async`/`await` become keywords|
