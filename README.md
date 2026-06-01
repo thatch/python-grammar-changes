@@ -5,10 +5,21 @@ different.)
 
 | Release | Commit   | Feature | With `__future__` |
 |---------|----------|---------|-------------------|
+| v3.16.0 | ??? | PEP 828 `yield from` in async defs |
+| v3.16.0 | ??? | PEP 822 d-strings |
+| v3.16.0 | ??? | PEP 802 empty sets |
+| v3.15.0 | ccbe41e2 | PEP 798 comprehension unpacking |
+| v3.15.0 | 46d5106c | PEP 810 `lazy import foo` |
+| v3.15.0 | 448d7b96 | match expressions handle unary plus |
+| v3.14.0 | 60202609 | PEP 750 t-strings |
+| v3.14.0 | c2ac662f | PEP 758 no parens on except |
+| v3.13.0 | ca269e58 | PEP 696 typevar defaults |
+| v3.12.0 | 24d8b884 | PEP 695 type params `def f[T](x: T) -> T` |
+| v3.12.0 | 1ef61cf7 | PEP 701 F-string contents parsed |
 | v3.11.0 | d60457a6 | PEP 654 `except*` groups |
 | v3.11.0 | e8e737bc | PEP 646 variadic generics |
 | v3.10.0 | 145bf269 | PEP 622/634 `match` statements |
-| v3.9.0  | 0daba822 | parenthesized context manager change |
+| v3.10.0 | 99db2a1d | parenthesized context manager change |
 | v3.8.0  | b5e3ea28 + a965db37 | PEP 570 positional-only params |
 | v3.8.0  | 8f59ee01 | PEP 572 `:=` |
 | v3.7.0  | - | - | `annotations` (on in 4.0) |
@@ -112,15 +123,17 @@ These are found in the `examples/` directory listed by the version they are
 "first" added.  Some are backported.  This could be cleaned up, and entries
 removed from this README if someone is interested and has time.
 
-If you get python 2.3 through 3.8 installed on your `PATH`, you can check an
-installed LibCST against the changes that result in syntax errors.
+If you get python 2.8 through 3.15 installed on your `PATH`, you can check
+which versions of Python give syntax errors.  (This used to check LibCST, but
+that became less useful with the native parser.)
 
 ```
 $ python metarun.py
-                                          23 24 25 26 27 30 31 32 33 34 35 36 37 38
-examples/py24-0027-generator-expr.py       X  o  o  o  o  o  o  o  o  o  o  o  o  o
-examples/py26-0025-print-function1.py      O  O  o  O  O  .  .  .  .  .  .  .  .  .
-examples/py26-0025-print-function2.py      X  X  .  X  X  o  o  o  o  o  o  o  o  o
-examples/py26-0025-print-function3.py      X  X  .  o  o  o  o  o  o  o  o  o  o  o
+                                                  38 39 10 11 12 13 14 15
+examples/py310-0041-paren-with.py                 .  o  o  o  o  o  o  o
+examples/py310-0042-match.py                      .  .  o  o  o  o  o  o
+examples/py311-0035-variadic-generics.py          .  .  .  o  o  o  o  o
+examples/py311-0036-except-star.py                .  .  .  o  o  o  o  o
+examples/py312-0037-protocol-generic.py           .  .  .  .  o  o  o  o
 ...
 ```

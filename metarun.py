@@ -1,3 +1,4 @@
+import re
 import sys
 import subprocess
 
@@ -15,14 +16,16 @@ VERSIONS = [
     # "python3.3",
     # "python3.4",
     # "python3.5",
-    "python3.6",
-    "python3.7",
+    # "python3.6",
+    # "python3.7",
     "python3.8",
     "python3.9",
     "python3.10",
     "python3.11",
     "python3.12",
     "python3.13",
+    "python3.14",
+    "python3.15",
 ]
 
 LIBCST_VERSIONS = [
@@ -34,9 +37,9 @@ LIBCST_VERSIONS = [
     # "3.1",
     # "3.3",
     # "3.5",
-    "3.6",
-    "3.7",
-    "3.8",
+    # "3.6",
+    # "3.7",
+    # "3.8",
     # "3.9",
     # "3.10",
     # "3.11",
@@ -44,6 +47,12 @@ LIBCST_VERSIONS = [
     # "3.13",
 ]
 
+VER_RE = re.compile(r'examples/py(\d+)-(\d+)')
+def ver_match(s):
+    m = VER_RE.match(s)
+    maj = m.group(1)[:1]
+    min = m.group(1)[1:]
+    return (int(maj), int(min), int(m.group(2)), s)
 
 def main(filters=()):
     # dict[filename][version]
@@ -70,7 +79,7 @@ def main(filters=()):
             buf.append(f" {short_version.replace('.', '')}")
     print("".join(buf))
 
-    for f in sorted(results):
+    for f in sorted(results, key=ver_match):
         if filters and not any(filt in f for filt in filters):
             continue
         sys.stdout.write(f.ljust(max_filename + 1))
