@@ -1,5 +1,5 @@
 Here's a high-level log of grammar changes by version, with the most effort
-sppent analyzing 3.6 and before.  (The release listed is from tags on master,
+spent analyzing 3.6 and before.  (The release listed is from tags on master,
 and probably doesn't take into account backports where the commit id is
 different.)
 
